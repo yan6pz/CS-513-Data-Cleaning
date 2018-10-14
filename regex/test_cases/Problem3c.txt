@@ -1,0 +1,17 @@
+ignore_case: True
+
+# Validating date in Format FEBRUARY 14, 2017
+
+Positive Examples:
+February 12, 1809
+MARCH 14, 1879
+july 25, 1920
+January 10, 1938
+November 03, 1990
+
+Negative Examples:
+February 121809
+MARCH 14: 1879
+july 25 - 1920
+January 10, , 1938
+ovember 03, 1990

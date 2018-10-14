@@ -1,0 +1,16 @@
+# Match IP Address (NO need to check whether the number is in range 0-255)
+Positive Examples:
+1.2.3.4  
+192.168.0.1
+0.0.0.0
+255.255.255.255  
+3.14.15.92
+
+Negative Examples:
+1
+1.2
+1.2.3
+1.2.3.4.5
+four.words.not.ok
+
+

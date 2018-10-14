@@ -1,0 +1,1 @@
+select count(*) as count, avg(reading) as avg_temp from survey where person=='pb' and quant ='temp'

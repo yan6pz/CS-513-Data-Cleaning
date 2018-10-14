@@ -1,0 +1,1 @@
+select distinct site from visited where id in (select taken from survey where person in (select id from Person where personal=='Frank'))

@@ -1,0 +1,1 @@
+SELECT (reading - (select avg(reading) FROM Survey WHERE quant='rad')) as reading_average FROM Survey WHERE quant='rad';

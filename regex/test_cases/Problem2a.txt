@@ -1,0 +1,15 @@
+# Validating Simple ISO Dates YYYY-MM-DD
+Positive Examples:
+1809-02-12
+1879-03-14
+1920-07-25
+1938-01-10
+1990-11-03
+
+Negative Examples:
+02-12-1809
+1879.03.14
+1920/07/25
+1938-01-100
+1990- -03
+

@@ -1,0 +1,13 @@
+{
+  "total_marks" : 100,
+  "marks_division" : {
+    "Problem1a" : 0.125,
+    "Problem1b" : 0.125,
+    "Problem2a" : 0.125,
+    "Problem2b" : 0.125,
+    "Problem3a" : 0.125,
+    "Problem3b" : 0.125,
+    "Problem3c" : 0.125,
+    "Problem4" : 0.125
+  }
+}

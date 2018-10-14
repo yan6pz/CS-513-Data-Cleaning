@@ -1,0 +1,1 @@
+select * from Survey where quant == 'sal' and (reading< 0.0 or reading >1.0);

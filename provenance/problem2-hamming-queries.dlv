@@ -1,0 +1,33 @@
+% HINTS. To solve Problem 2, you can reuse the rules from Problem 1:
+% use the relation hamming(Y,X,F) to define a new “parent” relation
+% par(X,Y). Using this new parent relation (obtained from the Hamming
+% edges), you can literally reuse the rules for anc(X,Y), ca(X,Y,A),
+% not lca(X,Y,A), and lca(X,Y,A) to solve Problem 2!
+
+% Compute ancestors recursively via parents:
+par(X,Y) :- hamming(Y,X,F).
+anc(X,Y) :- par(X,Y).
+anc(X,Y) :- par(X,Z), anc(Z,Y).
+
+% Problem 2(a) Compute the lineage of 360 in both provenance graphs (Fish and Sail),
+% i.e., all nodes for which there is a path that leads to 360. 
+a(X) :- anc(X, 360).
+
+
+% Compute common ancestors:
+ca(X,A,A) :- anc(A,X).
+ca(A,X,A) :- anc(A,X).
+ca(X,Y,A) :- anc(A,Y ), anc(A,X), X != Y.
+
+% Auxiliary rule to compute common ancestors which are NOT lowest:
+not_lca(X,Y,A) :- ca(X,Y,A), ca(X,Y,A1), anc(A,A1).
+
+% Finally, we can compute lowest common ancestors:
+lca(X,Y,A) :- ca(X,Y,A), not not_lca(X,Y,A).
+
+% Compute lca(360,600,a), i.e., the lowest common ancestor of 360 and 600 in both graphs:
+b(X) :- lca(360,600,X).
+
+
+
+

@@ -1,0 +1,32 @@
+% The parent facts par(Child, Parent)
+par(albert,bernhard). 
+par(albert,monique).
+par(bernhard,hermann). 
+par(bernhard,johanna).
+par(eva,kati).
+par(franz,rita). 
+par(franz,wilhelm).  
+par(heinz,rita). 
+par(heinz,wilhelm).
+par(hermann,rita).
+par(hermann,wilhelm). 
+par(karl,hermann). 
+par(karl,johanna). 
+par(kati,hermann).
+par(kati,johanna). 
+
+% Compute ancestors recursively via parents: 
+anc(X,Y) :- par(X,Y). 
+anc(X,Y) :- par(X,Z), anc(Z,Y).
+
+% Compute common ancestors:
+ca(X,A,A) :- anc(X,A). 
+ca(A,X,A) :- anc(X,A). 
+ca(X,Y,A) :- anc(X,A), anc(Y,A), X != Y.
+
+% Auxiliary rule to compute common ancestors which are NOT lowest: 
+not_lca(X,Y,A) :- ca(X,Y,A), ca(X,Y,A1), anc(A1,A).
+
+% Finally, we can compute lowest common ancestors: 
+lca(X,Y,A) :- ca(X,Y,A), not not_lca(X,Y,A).
+

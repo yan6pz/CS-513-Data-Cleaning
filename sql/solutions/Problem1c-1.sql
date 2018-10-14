@@ -1,0 +1,2 @@
+select name from Site
+

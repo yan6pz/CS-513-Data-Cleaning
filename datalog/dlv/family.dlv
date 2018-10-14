@@ -1,0 +1,35 @@
+% EDB (Extensional Database), "Facts", in file facts/family.facts.dlv
+
+% IDB (Intensional Database), "Rules"
+grandparent(X,Y) :-
+    parent(X, Z), parent(Z, Y).
+father(X,Y)  :-
+    parent(X, Y), male(X).
+mother(X,Y)  :-
+    parent(X, Y), female(X).
+brother(X,Y) :-
+    parent(P, X), parent(P, Y),
+    male(X), X != Y.
+sister(X,Y)  :-
+    parent(P, X), parent(P, Y),
+    female(X), X != Y.
+
+% c.1 descendant
+descendant(X, Y) :- parent(Y, X).
+descendant(X, Y) :- parent(Y, Z), descendant(X, Z).
+
+% c.2 sibling
+% sibling(X,Y) :- parent(P,X), parent(P,Y), X != Y, P == P.
+sibling(X, Y) :-
+      sister(Y, X),
+      brother(X, Y),
+      X != Y.
+
+% d.1 Every person must have a parent
+person(X) :- parent(_, X).
+icv_person_has_parent(X) :- parent(X, _), not person(X).
+
+% Every person has a father and mother
+icv_person_has_father_mother(X) :-parent(X, _).
+
+

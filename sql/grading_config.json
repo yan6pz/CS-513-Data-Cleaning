@@ -1,0 +1,129 @@
+{
+  "README" : "Refer not_for_learner/README.txt",
+
+  "total_marks" : 100,
+  "databases_dir" : "databases",
+  "solutions_output_dir" : "solutions_output",
+
+  "problems" : {
+
+    "Problem1c-1" : {
+      "order" : 1,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem1c-2a" : {
+      "order" : 2,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem1c-2b" : {
+      "order" : 3,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : false,
+      "readme" : "because query is supposed to return results in a certain order, we won't explicitly sort before comparison."
+    },
+    "Problem1c-3" : {
+      "order" : 4,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem1c-4a" : {
+      "order" : 5,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem1c-4b" : {
+      "order" : 6,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem1c-4c" : {
+      "order" : 7,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem1c-5a" : {
+      "order" : 8,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : false,
+      "readme" : "because query is supposed to return results in a certain order, we won't explicitly sort before comparison."
+    },
+    "Problem1c-6a" : {
+      "order" : 9,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem1c-6c" : {
+      "order" : 10,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem1c-6d" : {
+      "order" : 11,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : false,
+      "readme" : "because query is supposed to return results in a certain order, we won't explicitly sort before comparison."
+    },
+    "Problem1c-7a" : {
+      "order" : 12,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem1c-7b" : {
+      "order" : 13,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem1c-7c" : {
+      "order" : 14,
+      "database_file" : "survey.db",
+      "score" : 0.0526,
+      "sort" : false,
+      "readme" : "because query is supposed to return results in a certain order, we won't explicitly sort before comparison."
+    },
+    "Problem2a-FD-1" : {
+      "order" : 15,
+      "database_file" : "publications.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem2a-FD-2" : {
+      "order" : 16,
+      "database_file" : "publications.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem2a-NC-1" : {
+      "order" : 17,
+      "database_file" : "publications.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem2b-ID" : {
+      "order" : 18,
+      "database_file" : "publications.db",
+      "score" : 0.0526,
+      "sort" : true
+    },
+    "Problem2b-NC-2" : {
+      "order" : 19,
+      "database_file" : "publications.db",
+      "score" : 0.0526,
+      "sort" : true
+    }
+  }
+}

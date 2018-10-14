@@ -1,0 +1,74 @@
+% Assignment 2, Problem 2
+
+% EDB (Extensional Database) -- FACTS -- in file facts/publication.facts.dlv
+
+% ICs (Integrity Constraints) -- RULES to find "bad" (inconsistent) data
+
+% Problem 2a FD-1: if a row agrees with another row on the key attribute PID, 
+% then it should agree on ALL other attributes. 
+% check for attribut that have same id but different content in another fields
+% this constraint will just return icv_pid_key with second field as a label
+% to define field that have constraint violation and the third and fourth fields are their violated values
+
+icv_pid_key(ID,author,A1,A2) :- publication(ID, A1, _, _, _, _, _, _, _, _),
+                                publication(ID, A2, _, _, _, _, _, _, _, _),
+                                  A1 < A2.
+icv_pid_key(ID,year,Y1,Y2) :- publication(ID, _, Y1, _, _, _, _, _, _, _),
+                                publication(ID, _, Y2, _, _, _, _, _, _, _),
+                                 Y1 < Y2.
+icv_pid_key(ID,title,T1,T2) :- publication(ID, _, _, T1, _, _, _, _, _, _),
+                                publication(ID, _, _, T2, _, _, _, _, _, _),
+                                 T1 < T2.
+icv_pid_key(ID,journal,J1,J2) :- publication(ID, _, _, _, J1, _, _, _, _, _),
+                                publication(ID, _, _, _, J2, _, _, _, _, _),
+                                 J1 < J2.
+icv_pid_key(ID,vol,V1,V2) :- publication(ID, _, _, _, _, V1, _, _, _, _),
+                                publication(ID, _, _, _, _, V2, _, _, _, _),
+                                 V1 < V2.
+icv_pid_key(ID,no,N1,N2) :- publication(ID, _, _, _, _, _, N1, _, _, _),
+                                publication(ID, _, _, _, _, _, N2, _, _, _),
+                                 N1 < N2.
+icv_pid_key(ID,fp,F1,F2) :- publication(ID, _, _, _, _, _, _, F1, _, _),
+                                publication(ID, _, _, _, _, _, _, F2, _, _),
+                                 F1 < F2.
+icv_pid_key(ID,lp,L1,L2) :- publication(ID, _, _, _, _, _, _, _, L1, _),
+                                publication(ID, _, _, _, _, _, _, _, L2, _),
+                                 L1 < L2.
+icv_pid_key(ID,publisher,P1,P2) :- publication(ID, _, _, _, _, _, _, _, _, P1),
+                                publication(ID, _, _, _, _, _, _, _, _, P2),
+                                 P1 < P2.
+
+% Problem 2a FD-2: every journal has a single publisher
+
+% ic violation for journal -> publisher when one journal have different publisher
+% will return ID1, and ID2 of same journal that have different publishers along with the value of publishers
+
+icv_journal_publisher(ID1,ID2,J,P1,P2) :- publication(ID1, _, _, _, J, _, _, _, _, P1),
+                                publication(ID2, _, _, _, J, _, _, _, _, P2), P1<P2.
+
+% Problem 2a NC-1: The last page Lp cannot be smaller than the first page Fp
+
+ncv_firstpage_lastpage(ID,F,L) :- publication(ID, A, _, _, _, _, _, F, _, _),
+                                publication(ID, A, _, _, _, _, _, _, L, _), F>L.
+
+% Problem 2b ID (Inclusion Dependency):
+% Every cited publication in CITES also occurs in PUBLICATION.
+% Note: Publications P2 in the second column of cites(P1,P2) constitute all
+% *cited* publications, so checking P1 isn't required!
+% (If P1 is included, all *citing* and *cited* pubs are checked for inclusion
+%  in the Publication table. Wasn't required but is a useful check, too.)
+% Auxiliary relation: Unary relation to collect just the pub-ids.
+% The CITES[P2] \subseteq PUBLICATION[Pid] is violated if there is a P2
+% that's not among the pubs in PUBLICATION:
+
+cited_publication(P2) :- publication(P2, _, _, _, _, _, _, _, _, _), cites(_,P2).
+icv_cited_publication(P2) :- cites(P1,P2) , not cited_publication(P2).
+
+% Problem 2b NC-2: If P1 cites P2 then P2's year of publication
+%                  cannot be greater than P1.
+
+%If P1 cites P2 then P2's year of publication cannot be greater than P1's
+
+ncv_p1_greater_p2(P2,P1,Y2,Y1) :- publication(P2, _, Y2, _, _, _, _, _, _, _),
+                                  publication(P1, _, Y1, _, _, _, _, _, _, _),
+                                  cites(P1,P2), Y2<Y1.

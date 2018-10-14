@@ -1,0 +1,17 @@
+ignore_case: True
+
+# Validating email addresses
+
+Positive Examples:
+me@example.com
+more.with+symbol@foo.tv
+john.doe@example.com
+disposable.style.email.with+symbol@example.com
+other.email-with-dash@example.com
+
+Negative Examples:
+john..doe@example.com
+john.@example.com
+.john@example.com
+A@b@c@example.com
+me@some.c

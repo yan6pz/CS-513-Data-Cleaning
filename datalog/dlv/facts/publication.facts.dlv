@@ -1,0 +1,22 @@
+% EDB (Extensional Database) -- FACTS
+
+% Assume that the table is available as a Datalog predicate of the form
+% publication(I, A, Y, T, J, V, N, F, L, P).
+
+% Here are some entries, loosely based on the records shown on the assignment
+publication(6755, hyatt, 1872, fossil, bullmcz, 5, 5, 91, 9, publisher1).
+publication(2580, rolfe, 1962, phyllocarid, breviora, 151, 151, 4, 6, mcz).
+publication(2044, bather, 1934, chelonechinus, gsa, 45, 4, 808, 832, null).
+publication(4407, kummel, 1969, ammonoids, bullmcz, 137, 3, 476, null, publisher2).
+
+% Some additional publication to test IC violation
+publication(4407, doe, 2015, foobar, bullmcz, 10, 1, 10, 1, null).
+
+% cites(Pid1, Pid2) says that Pid1 is citing Pid2, i.e., Pid2 is cited.
+cites(4711, 2020).
+cites(4711, 3799).
+cites(3799, 2580).
+
+% Some more citations to test IC violation
+cites(2580, 2044).
+cites(2044, 2580).

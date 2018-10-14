@@ -1,0 +1,76 @@
+{
+  "total_marks" : 100,
+  "facts_dir" : "facts",
+  "solutions_output_dir" : "solutions_output",
+
+  "problems" : {
+
+    "problem1-lca-queries" : {
+      "order" : 1,
+      "facts_file" : "problem1-lca.dlv",
+      "predicates" : {
+        "a1" : {
+          "order" : 1,
+          "score" : 0.1,
+          "solution_file" : "problem1-a1.dlv.out"
+        },
+        "a2" : {
+          "order" : 2,
+          "score" : 0.1,
+          "solution_file" : "problem1-a2.dlv.out"
+        },
+        "b" : {
+          "order" : 3,
+          "score" : 0.1,
+          "solution_file" : "problem1-b.dlv.out"
+        },
+        "c1" : {
+          "order" : 4,
+          "score" : 0.1,
+          "solution_file" : "problem1-c1.dlv.out"
+        },
+        "c2" : {
+          "order" : 4,
+          "score" : 0.1,
+          "solution_file" : "problem1-c2.dlv.out"
+        }
+      }
+    },
+
+    "problem2-hamming-queries" : {
+      "order" : 2,
+      "predicates" : {
+        "a-fish" : {
+          "order" : 1,
+          "score" : 0.125,
+          "solution_file" : "problem2-a-fish.dlv.out",
+          "facts_file" : "problem2-fish.dlv",
+          "dlv_filter" : "a"
+        },
+        "a-sail" : {
+          "order" : 2,
+          "score" : 0.125,
+          "solution_file" : "problem2-a-sail.dlv.out",
+          "facts_file" : "problem2-sail.dlv",
+          "dlv_filter" : "a"
+        },
+        "b-fish" : {
+          "order" : 3,
+          "score" : 0.125,
+          "solution_file" : "problem2-b-fish.dlv.out",
+          "facts_file" : "problem2-fish.dlv",
+          "dlv_filter" : "b"
+        },
+        "b-sail" : {
+          "order" : 4,
+          "score" : 0.125,
+          "solution_file" : "problem2-b-sail.dlv.out",
+          "facts_file" : "problem2-sail.dlv",
+          "dlv_filter" : "b"
+        }
+      }
+    }
+
+
+  }
+}

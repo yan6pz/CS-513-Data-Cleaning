@@ -1,0 +1,1 @@
+{descendant(john,william), descendant(james,william), descendant(james,john), descendant(bill,william), descendant(bill,john), descendant(bill,james), descendant(bill,sue), descendant(carol,william), descendant(carol,john), descendant(carol,james), descendant(carol,sue)}

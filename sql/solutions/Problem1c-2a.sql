@@ -1,0 +1,1 @@
+select distinct dated from Visited where dated is not null

@@ -1,0 +1,1 @@
+select * from visited where dated is not null

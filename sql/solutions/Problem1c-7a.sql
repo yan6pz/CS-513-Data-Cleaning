@@ -1,0 +1,1 @@
+select taken, person, quant, reading, site from survey as s inner join visited as v on s.taken==v.id where site='DR-1' and quant='rad'

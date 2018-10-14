@@ -1,0 +1,14 @@
+% SOLUTIONS TEMPLATES: 
+
+a1(X) :- anc(albert, X) .   % replace body so that a1(X) retrieves albert's ancestors.
+a2(X) :- anc(eva, X).   % replace body so that a2(X) retrieves eva's ancestors.
+
+b(X) :- ca(albert,eva,X).   % replace body so that b(x) retrieves the common ancestors of albert and eva
+
+c1(X) :- lca(albert,eva,X).  % replace body so that c1(X) retrieves the LCA of albert and eva
+c2(X) :- not_lca(albert,eva,X).  % replace body so that c2(X) retrieves common ancestors of albert and eva, but not LCA.
+	
+% (d) - not graded. Discuss on Piazza!
+
+% (e) - not graded. Discuss on Piazza!
+

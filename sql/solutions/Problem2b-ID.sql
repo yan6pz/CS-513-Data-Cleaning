@@ -1,0 +1,1 @@
+select cited from cites where cited not in (select pid from publication)
