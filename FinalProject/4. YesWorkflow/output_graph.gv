@@ -1,0 +1,87 @@
+digraph Workflow {
+rankdir=LR
+fontname=Courier; fontsize=18; labelloc=t
+label=DataCleanup
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+SplitFarmersMarketWithOpenRefine [shape=record rankdir=LR label="{{<f0> SplitFarmersMarketWithOpenRefine |<f1> Use OpenRefine to split FarmersMarket.csv}}"];
+CleanMarketsWithOpenRefine [shape=record rankdir=LR label="{{<f0> CleanMarketsWithOpenRefine |<f1> Use OpenRefine to Clean Markets.csv}}"];
+ExtractCitiesWithOpenRefine [shape=record rankdir=LR label="{{<f0> ExtractCitiesWithOpenRefine |<f1> Use OpenRefine to Clean cities.csv}}"];
+CleanCountriesWithOpenRefine [shape=record rankdir=LR label="{{<f0> CleanCountriesWithOpenRefine |<f1> Use OpenRefine to Clean countries.csv}}"];
+CleanStatesWithOpenRefine [shape=record rankdir=LR label="{{<f0> CleanStatesWithOpenRefine |<f1> Use OpenRefine to Clean states.csv}}"];
+CleanFacebookWithOpenRefine [shape=record rankdir=LR label="{{<f0> CleanFacebookWithOpenRefine |<f1> Use OpenRefine to Clean facebook.csv}}"];
+CleanothermediaWithOpenRefine [shape=record rankdir=LR label="{{<f0> CleanothermediaWithOpenRefine |<f1> Use OpenRefine to Clean othermedia.csv}}"];
+CleanwebsiteWithOpenRefine [shape=record rankdir=LR label="{{<f0> CleanwebsiteWithOpenRefine |<f1> Use OpenRefine to Clean website.csv}}"];
+CleanseasondatesWithOpenRefine [shape=record rankdir=LR label="{{<f0> CleanseasondatesWithOpenRefine |<f1> Use OpenRefine to Clean seasondates.csv}}"];
+CleanseasontimesWithOpenRefine [shape=record rankdir=LR label="{{<f0> CleanseasontimesWithOpenRefine |<f1> Use OpenRefine to Clean times.csv}}"];
+SQLOperationsOnMarkets [shape=record rankdir=LR label="{{<f0> SQLOperationsOnMarkets |<f1> Use SQLLite to load market_clean.csv into table Markets}}"];
+SQLOperationsOnCities [shape=record rankdir=LR label="{{<f0> SQLOperationsOnCities |<f1> Use SQLLite to load cities_clean.csv into table cities}}"];
+SQLOperationsOnCountries [shape=record rankdir=LR label="{{<f0> SQLOperationsOnCountries |<f1> Use SQLLite to load countries_clean.csv into table countries}}"];
+SQLOperationsOnStates [shape=record rankdir=LR label="{{<f0> SQLOperationsOnStates |<f1> Use SQLLite to load states_clean.csv into table states}}"];
+SQLOperationsOnFacebook [shape=record rankdir=LR label="{{<f0> SQLOperationsOnFacebook |<f1> Use SQLLite to load facebook_clean.csv into table facebook}}"];
+SQLOperationsOnMedia [shape=record rankdir=LR label="{{<f0> SQLOperationsOnMedia |<f1> Use SQLLite to load othermedia_clean.csv into table othermedia}}"];
+SQLOperationsOnWebsite [shape=record rankdir=LR label="{{<f0> SQLOperationsOnWebsite |<f1> Use SQLLite to load website_clean.csv into table website}}"];
+SQLOperationsOnseasondates [shape=record rankdir=LR label="{{<f0> SQLOperationsOnseasondates |<f1> Use SQLLite to load seasondates_clean.csv into table seasondates}}"];
+SQLOperationsOnseasontimes [shape=record rankdir=LR label="{{<f0> SQLOperationsOnseasontimes |<f1> Use SQLLite to load times_clean.csv into table seasontimes}}"];
+SQLConstraintsCheck [shape=record rankdir=LR label="{{<f0> SQLConstraintsCheck |<f1> Use SQL to check integrity constraints and functional dependencies}}"];
+edge[fontname=Helvetica]
+SplitFarmersMarketWithOpenRefine -> CleanMarketsWithOpenRefine [label="markets_extract.csv"]
+SplitFarmersMarketWithOpenRefine -> ExtractCitiesWithOpenRefine [label="cities_extract.csv"]
+SplitFarmersMarketWithOpenRefine -> CleanCountriesWithOpenRefine [label="countries_extract.csv"]
+SplitFarmersMarketWithOpenRefine -> CleanStatesWithOpenRefine [label="states_extract.csv"]
+SplitFarmersMarketWithOpenRefine -> CleanFacebookWithOpenRefine [label="facebook_extract.csv"]
+SplitFarmersMarketWithOpenRefine -> CleanothermediaWithOpenRefine [label="othermedia_extract.csv"]
+SplitFarmersMarketWithOpenRefine -> CleanwebsiteWithOpenRefine [label="website_extract.csv"]
+SplitFarmersMarketWithOpenRefine -> CleanseasondatesWithOpenRefine [label="seasondates_extract.csv"]
+SplitFarmersMarketWithOpenRefine -> CleanseasontimesWithOpenRefine [label="seasontimes_extract.csv"]
+CleanMarketsWithOpenRefine -> SQLOperationsOnMarkets [label="market_Clean.csv"]
+ExtractCitiesWithOpenRefine -> SQLOperationsOnCities [label="cities_Clean.csv"]
+CleanCountriesWithOpenRefine -> SQLOperationsOnCountries [label="countries_Clean.csv"]
+CleanStatesWithOpenRefine -> SQLOperationsOnStates [label="states_Clean.csv"]
+CleanFacebookWithOpenRefine -> SQLOperationsOnFacebook [label="facebook_Clean.csv"]
+CleanothermediaWithOpenRefine -> SQLOperationsOnMedia [label="othermedia_Clean.csv"]
+CleanwebsiteWithOpenRefine -> SQLOperationsOnWebsite [label="website_Clean.csv"]
+CleanseasondatesWithOpenRefine -> SQLOperationsOnseasondates [label="seasondates_Clean.csv"]
+CleanseasontimesWithOpenRefine -> SQLOperationsOnseasontimes [label="seasontimes_Clean.csv"]
+SQLOperationsOnMarkets -> SQLConstraintsCheck [label=Markets]
+SQLOperationsOnCities -> SQLConstraintsCheck [label=Cities]
+SQLOperationsOnCountries -> SQLConstraintsCheck [label=Countries]
+SQLOperationsOnStates -> SQLConstraintsCheck [label=States]
+SQLOperationsOnFacebook -> SQLConstraintsCheck [label=Facebook]
+SQLOperationsOnMedia -> SQLConstraintsCheck [label=Othermedia]
+SQLOperationsOnWebsite -> SQLConstraintsCheck [label=Website]
+SQLOperationsOnseasondates -> SQLConstraintsCheck [label=Seasondates]
+SQLOperationsOnseasontimes -> SQLConstraintsCheck [label=Seasontimes]
+}}
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Courier width=0.2]
+"farmersmarket.csv_input_port" [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Courier width=0.2]
+markets_output_port [label=""]
+seasondates_output_port [label=""]
+seasontimes_output_port [label=""]
+states_output_port [label=""]
+countries_output_port [label=""]
+cities_output_port [label=""]
+facebook_output_port [label=""]
+othermedia_output_port [label=""]
+website_output_port [label=""]
+}}
+edge[fontname=Helvetica]
+"farmersmarket.csv_input_port" -> SplitFarmersMarketWithOpenRefine [label="farmersmarket.csv"]
+edge[fontname=Helvetica]
+SQLConstraintsCheck -> markets_output_port [label=markets]
+SQLConstraintsCheck -> seasondates_output_port [label=seasondates]
+SQLConstraintsCheck -> seasontimes_output_port [label=seasontimes]
+SQLConstraintsCheck -> states_output_port [label=states]
+SQLConstraintsCheck -> countries_output_port [label=countries]
+SQLConstraintsCheck -> cities_output_port [label=cities]
+SQLConstraintsCheck -> facebook_output_port [label=facebook]
+SQLConstraintsCheck -> othermedia_output_port [label=othermedia]
+SQLConstraintsCheck -> website_output_port [label=website]
+}

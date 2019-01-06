@@ -1,0 +1,27 @@
+sqlite3 ./farmersmarket.db
+
+-- importing the csv 
+.mode csv
+.import ../CleanedData/counties.csv counties
+.import ../CleanedData/cities.csv cities
+.import ../CleanedData/states.csv states
+.import ../CleanedData/markets.csv markets
+
+.import ../CleanedData/website.csv website
+.import ../CleanedData/facebook.csv facebook
+.import ../CleanedData/twitter.csv twitter
+.import ../CleanedData/youtube.csv youtube
+.import ../CleanedData/othermedia.csv othermedia
+
+.import ../CleanedData/seasondates.csv seasondates
+.import ../CleanedData/seasontimes.csv seasontimes
+
+
+--displaying the schema
+.schema farmersmarket
+
+
+-- only if you want sql queries to create the tables in an empty database
+.output ./farmersmarket.sql
+.dump
+
